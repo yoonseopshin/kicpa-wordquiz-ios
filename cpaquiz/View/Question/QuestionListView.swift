@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct QuestionListView: View {
+    var questionList: Array<Question>
+    
     var body: some View {
         VStack {
-            List(questions) { question in
+            List(questionList) { question in
                 QuestionSummaryView(question: question)
             }
         }
@@ -19,6 +21,6 @@ struct QuestionListView: View {
 
 struct QuestionListView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionListView()
+        QuestionListView(questionList: questions)
     }
 }

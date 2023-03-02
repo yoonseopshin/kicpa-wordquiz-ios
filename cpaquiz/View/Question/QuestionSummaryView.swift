@@ -15,7 +15,7 @@ struct QuestionSummaryView: View {
         // Change to Sheet
         VStack(spacing: 8) {
             HStack {
-                Text(String(question.year))
+                Text("\(String(question.year))년 \(question.pid)번")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.secondary)
@@ -46,7 +46,11 @@ struct QuestionSummaryView: View {
             showQuestionDetailSheet = true
         }
         .sheet(isPresented: $showQuestionDetailSheet) {
-            QuestionDetailView(question: question, mode: QuestionDetailMode.detail)
+            QuestionDetailView(
+                question: question,
+                mode: QuestionDetailMode.detail,
+                selectedAnswer: .constant(-1)
+            )
                 .padding(.top, 20)
         }
     }

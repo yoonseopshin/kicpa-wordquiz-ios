@@ -10,7 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         NavigationView {
-            Text("설정화면 무엇을 넣을까?")
+            Text("🚧 작업중...")
+                .font(.largeTitle)
             .navigationTitle("설정")
         }
     }

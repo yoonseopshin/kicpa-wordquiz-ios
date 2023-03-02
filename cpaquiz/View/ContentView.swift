@@ -22,11 +22,12 @@ struct ContentView: View {
                     Text("노트")
                 }
             
-            SettingsView()
-                .tabItem {
-                    Image(systemName: "gearshape.fill")
-                    Text("설정")
-                }
+            // TODO: Open sources, App version, etc.
+//            SettingsView()
+//                .tabItem {
+//                    Image(systemName: "gearshape.fill")
+//                    Text("설정")
+//                }
         }
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct QuestionDetailView: View {
     let question: Question
     let mode: QuestionDetailMode
-    @State private var selectedAnswer: Int = -1
+    @Binding var selectedAnswer: Int
     
     var body: some View {
         ScrollView {
@@ -64,6 +64,9 @@ struct QuestionDetailView: View {
             .cornerRadius(10)
             .padding(.horizontal, 16)
             .shadow(radius: 5)
+            .onAppear {
+                selectedAnswer = -1
+            }
         }
     }
 }
@@ -114,6 +117,10 @@ struct RadioButton: View {
 
 struct QuestionDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionDetailView(question: questions[106], mode: QuestionDetailMode.detail)
+        QuestionDetailView(
+            question: questions[106],
+            mode: QuestionDetailMode.detail,
+            selectedAnswer: .constant(-1)
+        )
     }
 }

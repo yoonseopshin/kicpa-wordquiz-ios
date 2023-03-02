@@ -10,7 +10,7 @@ import SwiftUI
 struct NoteView: View {
     var body: some View {
         NavigationView {
-            QuestionListView()
+            QuestionListView(questionList: questions)
                 .navigationTitle("노트")
         }
     }

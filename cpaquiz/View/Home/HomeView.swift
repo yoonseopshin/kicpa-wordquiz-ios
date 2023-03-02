@@ -15,6 +15,8 @@ struct HomeView: View {
         CardView(title: toKoreanQuizType(from: TypeEnum.commercialLaw), description: "총 \(countQuestionsByType(questions, type: .commercialLaw))문제"),
         CardView(title: toKoreanQuizType(from: TypeEnum.taxLaw), description: "총 \(countQuestionsByType(questions, type: .taxLaw))문제"),
     ]
+    // FIXME: fetch from network
+    let dday = calculateDDay(targetDateString: "2024-02-25")
     
     var body: some View {
         NavigationView {
@@ -29,7 +31,7 @@ struct HomeView: View {
                 }
                 .padding(.top, 32)
             }
-            .navigationTitle("D-361")
+            .navigationTitle(dday)
         }
     }
 }

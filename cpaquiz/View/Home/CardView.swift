@@ -10,6 +10,7 @@ import SwiftUI
 struct CardView: View {
     let title: String
     let description: String
+    @State private var showQuizSheet = false
     
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
@@ -33,6 +34,13 @@ struct CardView: View {
         .background(Color(.secondarySystemBackground))
         .cornerRadius(16)
         .shadow(radius: 2)
+        .onTapGesture {
+            showQuizSheet = true
+        }
+        .sheet(isPresented: $showQuizSheet) {
+            QuizView(currentQuestion: questions.randomElement()!)
+                .padding(.top, 20)
+        }
     }
 }
 
