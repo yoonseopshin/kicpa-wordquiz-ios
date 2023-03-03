@@ -36,8 +36,8 @@ struct QuestionDetailView: View {
                     Divider()
                     
                     Text(question.subDescription.joined(separator: "\n"))
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color(.secondaryLabel))
+                        .font(.callout)
                 }
                 
                 Divider()
@@ -68,6 +68,8 @@ struct QuestionDetailView: View {
                 selectedAnswer = -1
             }
         }
+        .padding(.top, 20)
+        
     }
 }
 
@@ -82,7 +84,7 @@ struct UnclickableRadioButton: View {
                 .foregroundColor(selectedID == id ? Color.blue : Color.gray)
             Text(label)
                 .multilineTextAlignment(.leading)
-                .foregroundColor(.primary)
+                .foregroundColor(.secondary)
                 .font(.body)
             Spacer()
         }
@@ -105,8 +107,8 @@ struct RadioButton: View {
                     .foregroundColor(selectedID == id ? Color.blue : Color.gray)
                 Text(label)
                     .multilineTextAlignment(.leading)
-                    .foregroundColor(.primary)
-                    .font(.body)
+                    .foregroundColor(.secondary)
+                    .font(.callout)
                 Spacer()
             }
         }
@@ -118,7 +120,7 @@ struct RadioButton: View {
 struct QuestionDetailView_Previews: PreviewProvider {
     static var previews: some View {
         QuestionDetailView(
-            question: questions[106],
+            question: questions[103],
             mode: QuestionDetailMode.detail,
             selectedAnswer: .constant(-1)
         )

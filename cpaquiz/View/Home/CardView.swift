@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct CardView: View {
-    let title: String
-    let description: String
+    let quizType: TypeEnum
     @State private var showQuizSheet = false
     
     var body: some View {
+        let title: String = toKoreanQuizType(from: quizType)
+        let description: String = "총 \(filterQuestions(by: quizType, from: questions).count)문제"
+        
         HStack(alignment: .center, spacing: 8) {
             Image(systemName: "play.circle")
                 .font(.system(size: 24))
@@ -38,7 +40,12 @@ struct CardView: View {
             showQuizSheet = true
         }
         .sheet(isPresented: $showQuizSheet) {
-            QuizView(currentQuestion: questions.randomElement()!)
+            let quizQuestions = filterQuestions(by: quizType, from: questions)
+            
+            QuizView(
+                currentQuestion: quizQuestions.randomElement()!,
+                quizQuestions: quizQuestions
+            )
                 .padding(.top, 20)
         }
     }
@@ -46,8 +53,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(title: "회계학", description: "총 123문제")
-            .previewLayout(.fixed(width: 200, height: 200))
-            .padding()
+        CardView(quizType: TypeEnum.business)
     }
 }

@@ -18,6 +18,10 @@ struct QuizView: View {
     @State private var selectedAnswer: Int = -1
     @State private var toastConfig: ToastConfig = ToastConfig()
     
+    // FIXME: questions -> questions which are filtered by type
+    var quizQuestions: Array<Question>
+    
+    
     var body: some View {
         VStack(alignment: .leading) {
             switch quizUiState {
@@ -25,9 +29,9 @@ struct QuizView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("퀴즈")
-                            .font(.title2)
+                            .font(.title)
                         Text("\(min(solvedQuestions + 1, 5))/5")
-                            .font(.subheadline)
+                            .font(.headline)
                     }
                     
                     Spacer()
@@ -39,34 +43,40 @@ struct QuizView: View {
                     mode: QuestionDetailMode.quiz,
                     selectedAnswer: $selectedAnswer
                 )
-                    .toast(toastConfig: $toastConfig)
+                .toast(toastConfig: $toastConfig)
                 
                 Spacer()
                 
                 HStack {
                     Spacer()
                     
-                    CircleButton(icon: "checkmark", bodyColor: Color(.systemTeal), iconColor: Color.white) {
+                    CircleButton(icon: "checkmark", bodyColor: Color(.systemIndigo), iconColor: Color.white) {
+                        if (selectedAnswer < 0 || selectedAnswer > 4) {
+                            toastConfig = ToastConfig(
+                                isShowing: true, icon: "exclamationmark.triangle.fill", message: "정답을 선택해주세요.")
+                            return
+                        }
+                        
                         totalQuestions.append(currentQuestion)
                         
                         if (currentQuestion.answer == selectedAnswer) {
                             toastConfig = ToastConfig(
-                                isShowing: true, icon: "checkmark.circle", message: "정답입니다.")
+                                isShowing: true, icon: "checkmark.circle.fill", message: "정답입니다.", background: Color(.systemGreen))
                         } else {
                             toastConfig = ToastConfig(
-                                isShowing: true, icon: "xmark.circle", message: "오답입니다.")
+                                isShowing: true, icon: "xmark.circle.fill", message: "오답입니다.", background: Color(.systemRed))
                         }
                         
                         if (solvedQuestions < 5) {
                             solvedQuestions += 1
                             
                             if (solvedQuestions >= 5) {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                     quizUiState = QuizUiState.result
                                 }
                             } else {
                                 selectedAnswer = -1
-                                currentQuestion = questions.randomElement()!
+                                currentQuestion = quizQuestions.randomElement()!
                             }
                         }
                     }
@@ -93,6 +103,9 @@ enum QuizUiState {
 
 struct QuizView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizView(currentQuestion: questions.randomElement()!)
+        QuizView(
+            currentQuestion: questions.randomElement()!,
+            quizQuestions: questions
+        )
     }
 }

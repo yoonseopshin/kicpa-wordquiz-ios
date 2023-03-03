@@ -51,7 +51,6 @@ struct QuestionSummaryView: View {
                 mode: QuestionDetailMode.detail,
                 selectedAnswer: .constant(-1)
             )
-                .padding(.top, 20)
         }
     }
 }

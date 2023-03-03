@@ -10,10 +10,10 @@ import SwiftUI
 struct HomeView: View {
     let cardColumns = [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)]
     let cards = [
-        CardView(title: toKoreanQuizType(from: TypeEnum.accounting), description: "총 \(countQuestionsByType(questions, type: TypeEnum.accounting))문제"),
-        CardView(title: toKoreanQuizType(from: TypeEnum.business), description: "총 \(countQuestionsByType(questions, type: .business))문제"),
-        CardView(title: toKoreanQuizType(from: TypeEnum.commercialLaw), description: "총 \(countQuestionsByType(questions, type: .commercialLaw))문제"),
-        CardView(title: toKoreanQuizType(from: TypeEnum.taxLaw), description: "총 \(countQuestionsByType(questions, type: .taxLaw))문제"),
+        CardView(quizType: TypeEnum.accounting),
+        CardView(quizType: TypeEnum.business),
+        CardView(quizType: TypeEnum.commercialLaw),
+        CardView(quizType: TypeEnum.taxLaw)
     ]
     // FIXME: fetch from network
     let dday = calculateDDay(targetDateString: "2024-02-25")
@@ -23,8 +23,8 @@ struct HomeView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     LazyVGrid(columns: cardColumns, spacing: 16) {
-                        ForEach(cards, id: \.title) { card in
-                            card.aspectRatio(0.75, contentMode: .fit)
+                        ForEach(cards, id: \.quizType) { card in
+                            card.aspectRatio(1.66, contentMode: .fit)
                         }
                     }
                     .padding(.horizontal)

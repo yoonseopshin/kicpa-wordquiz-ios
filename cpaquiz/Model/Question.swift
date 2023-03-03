@@ -40,3 +40,7 @@ enum TypeEnum: String, Hashable, Codable {
     case commercialLaw = "CommercialLaw"
     case taxLaw = "TaxLaw"
 }
+
+func filterQuestions(by type: TypeEnum, from questions: [Question]) -> [Question] {
+    return questions.filter { $0.type == type }
+}

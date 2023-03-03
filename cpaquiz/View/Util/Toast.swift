@@ -12,6 +12,7 @@ struct ToastConfig {
     var icon: String = ""
     var message: String = ""
     var duration: TimeInterval = 1
+    var background: Color = Color(.secondarySystemBackground)
 }
 
 struct ToastModifier: ViewModifier {
@@ -24,9 +25,7 @@ struct ToastModifier: ViewModifier {
                 toast
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + config.duration) {
-                            withAnimation {
-                                config = ToastConfig(isShowing: false)
-                            }
+                            config = ToastConfig()
                         }
                     }
             }
@@ -44,7 +43,7 @@ struct ToastModifier: ViewModifier {
             }
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding()
-            .background(Color.white)
+            .background(config.background)
             .cornerRadius(5)
             .shadow(radius: 5)
         }
