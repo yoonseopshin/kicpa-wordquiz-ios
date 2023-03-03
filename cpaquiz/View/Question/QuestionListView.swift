@@ -12,9 +12,30 @@ struct QuestionListView: View {
     
     var body: some View {
         VStack {
-            List(questionList) { question in
-                QuestionSummaryView(question: question)
+            List {
+                Section(header: HStack {
+                    Text("전체문제")
+                        .font(.title2)
+                        .foregroundColor(Color(.label))
+                    
+                    Text("\(questionList.count)")
+                        .padding(4)
+                        .font(.footnote)
+                        .foregroundColor(.white)
+                        .background(Color(.systemBlue))
+                        .clipShape(Capsule())
+                    
+                    Spacer()
+                }
+                    .padding(.vertical, 8)
+                    .frame(minWidth:0, maxWidth: .infinity)                    
+                ) {
+                    ForEach(questionList) { question in
+                        QuestionSummaryView(question: question)
+                    }
+                }
             }
+            .listStyle(.plain)
         }
     }
 }
