@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import GoogleMobileAds
 
 struct NoteView: View {
     var body: some View {
         NavigationView {
-            QuestionListView(questionList: questions)
-                .navigationTitle("노트")
+            VStack {
+                GoogleAdBannerView()
+                    .frame(
+                        width: UIScreen.main.bounds.width,
+                        height: GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(UIScreen.main.bounds.width).size.height
+                    )
+                
+                QuestionListView(questionList: questions)
+                    .navigationTitle("노트")
+            }
         }
     }
 }

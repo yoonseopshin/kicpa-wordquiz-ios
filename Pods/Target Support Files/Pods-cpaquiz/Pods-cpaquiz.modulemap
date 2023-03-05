@@ -1,0 +1,6 @@
+framework module Pods_cpaquiz {
+  umbrella header "Pods-cpaquiz-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleMobileAds
 
 struct QuizView: View {
     
@@ -85,11 +86,19 @@ struct QuizView: View {
                 Spacer()
             case .result:
                 NavigationView {
-                    QuestionListView(questionList: totalQuestions)
-                        .navigationTitle("결과")
-                        .navigationBarItems(trailing: Button("확인") {
-                            dismiss()
-                        })
+                    VStack {
+                        GoogleAdBannerView()
+                            .frame(
+                                width: UIScreen.main.bounds.width,
+                                height: GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(UIScreen.main.bounds.width).size.height
+                            )
+                        
+                        QuestionListView(questionList: totalQuestions)
+                            .navigationTitle("결과")
+                            .navigationBarItems(trailing: Button("확인") {
+                                dismiss()
+                            })
+                    }
                 }
             }
         }
