@@ -16,6 +16,7 @@
 		01549CE429AF15860004D1EE /* cpaquizUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01549CE329AF15860004D1EE /* cpaquizUITestsLaunchTests.swift */; };
 		01549CF229AF19290004D1EE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01549CF129AF19290004D1EE /* HomeView.swift */; };
 		01549CF429AF1A110004D1EE /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01549CF329AF1A110004D1EE /* CardView.swift */; };
+		0159E4CF29B63C6E0093AC8B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159E4CE29B63C6E0093AC8B /* String.swift */; };
 		01B2D46A29AF2A4C00D968E0 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2D46929AF2A4C00D968E0 /* NoteView.swift */; };
 		01B2D46C29AF2A5400D968E0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2D46B29AF2A5400D968E0 /* SettingsView.swift */; };
 		01B2D46F29AF427200D968E0 /* cpa-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 01B2D46E29AF427200D968E0 /* cpa-data.json */; };
@@ -67,6 +68,7 @@
 		01549CE329AF15860004D1EE /* cpaquizUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cpaquizUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		01549CF129AF19290004D1EE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		01549CF329AF1A110004D1EE /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		0159E4CE29B63C6E0093AC8B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		01B2D46929AF2A4C00D968E0 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		01B2D46B29AF2A5400D968E0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		01B2D46E29AF427200D968E0 /* cpa-data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "cpa-data.json"; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				01BDAC1529B0F0460031A635 /* Toast.swift */,
+				0159E4CE29B63C6E0093AC8B /* String.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0159E4CF29B63C6E0093AC8B /* String.swift in Sources */,
 				01BDAC1629B0F0460031A635 /* Toast.swift in Sources */,
 				01BDAC0D29B0C05B0031A635 /* CircleButton.swift in Sources */,
 				01549CF229AF19290004D1EE /* HomeView.swift in Sources */,

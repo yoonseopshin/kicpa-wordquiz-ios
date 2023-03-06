@@ -44,3 +44,14 @@ enum TypeEnum: String, Hashable, Codable {
 func filterQuestions(by type: TypeEnum, from questions: [Question]) -> [Question] {
     return questions.filter { $0.type == type }
 }
+
+func filterQuestions(by searchText: String, from questions: [Question]) -> [Question] {
+    return questions.filter { question in
+        let searchString = searchText.lowercased()
+        let descriptionContainsSearchText = question.description.lowercased().contains(searchString)
+        let subDescriptionContainsSearchText = (question.subDescription.map { $0.lowercased().contains(searchString) }).contains(true)
+        let questionContainsSearchText = question.questions.contains { $0.lowercased().contains(searchString) }
+        let pidContainsSearchText = String(question.pid).contains(searchString)
+        return descriptionContainsSearchText || subDescriptionContainsSearchText || questionContainsSearchText || pidContainsSearchText
+    }
+}
