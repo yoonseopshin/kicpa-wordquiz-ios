@@ -19,8 +19,8 @@ target 'cpaquiz' do
   # Firebase
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Analytics'
-  pod 'Firebase/Crashlytics'
   pod 'Firebase/AdMob'
+  pod 'Firebase/Crashlytics'
 
 
 end
