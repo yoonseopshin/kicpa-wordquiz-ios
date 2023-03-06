@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleMobileAds
 
 struct HomeView: View {
     let cardColumns = [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)]
@@ -22,6 +23,12 @@ struct HomeView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
+                    GoogleAdBannerView()
+                        .frame(
+                            width: UIScreen.main.bounds.width,
+                            height: GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(UIScreen.main.bounds.width).size.height
+                        )
+                    
                     LazyVGrid(columns: cardColumns, spacing: 16) {
                         ForEach(cards, id: \.quizType) { card in
                             card.aspectRatio(1.66, contentMode: .fit)
