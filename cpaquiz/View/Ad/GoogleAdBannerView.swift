@@ -17,8 +17,8 @@ private let adUnitId = "ca-app-pub-5004953701825085/7230776650"
 struct GoogleAdBannerView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         let viewController = UIViewController()
-        let bannerSize = kGADAdSizeBanner
-        let banner = GADBannerView(adSize: kGADAdSizeBanner)
+        let bannerSize = GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(UIScreen.main.bounds.width)
+        let banner = GADBannerView(adSize: bannerSize)
         banner.rootViewController = viewController
         viewController.view.addSubview(banner)
         viewController.view.frame = CGRect(origin: .zero, size: bannerSize.size)
