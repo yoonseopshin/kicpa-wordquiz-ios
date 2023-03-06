@@ -93,7 +93,10 @@ struct QuizView: View {
                                 height: GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(UIScreen.main.bounds.width).size.height
                             )
                         
-                        QuestionListView(questionList: totalQuestions)
+                        QuestionListView(
+                            questionList: totalQuestions,
+                            listHeaderTitle: "내가 푼 문제"
+                        )
                             .navigationTitle("결과")
                             .navigationBarItems(trailing: Button("확인") {
                                 dismiss()

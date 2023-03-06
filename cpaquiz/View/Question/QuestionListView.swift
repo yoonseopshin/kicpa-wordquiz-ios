@@ -9,12 +9,13 @@ import SwiftUI
 
 struct QuestionListView: View {
     var questionList: Array<Question>
+    var listHeaderTitle: String
     
     var body: some View {
         VStack {
             List {
                 Section(header: HStack {
-                    Text("전체문제")
+                    Text(listHeaderTitle)
                         .font(.title2)
                         .foregroundColor(Color(.label))
                     
@@ -42,6 +43,6 @@ struct QuestionListView: View {
 
 struct QuestionListView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionListView(questionList: questions)
+        QuestionListView(questionList: questions, listHeaderTitle: "전체문제")
     }
 }

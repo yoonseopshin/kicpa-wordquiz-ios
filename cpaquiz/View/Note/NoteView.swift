@@ -18,7 +18,10 @@ struct NoteView: View {
                         height: GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(UIScreen.main.bounds.width).size.height
                     )
                 
-                QuestionListView(questionList: questions)
+                QuestionListView(
+                    questionList: questions,
+                    listHeaderTitle: "전체문제"
+                )
                     .navigationTitle("노트")
             }
         }
