@@ -43,6 +43,8 @@ struct CardView: View {
             let quizQuestions = filterQuestions(by: quizType, from: questions)
             
             QuizView(
+                // FIXME: To be stored to local storage
+                quizSize: 10,
                 currentQuestion: quizQuestions.randomElement()!,
                 quizQuestions: quizQuestions
             )

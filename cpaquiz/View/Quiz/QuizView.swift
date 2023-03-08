@@ -11,6 +11,7 @@ import GoogleMobileAds
 struct QuizView: View {
     
     @Environment(\.dismiss) var dismiss
+    var quizSize: Int
     @State var currentQuestion: Question
     @State private var quizUiState: QuizUiState = QuizUiState.quiz
     @State private var solvedQuestions: Int = 0
@@ -31,7 +32,7 @@ struct QuizView: View {
                     VStack(alignment: .leading) {
                         Text("퀴즈")
                             .font(.title)
-                        Text("\(min(solvedQuestions + 1, 5))/5")
+                        Text("\(min(solvedQuestions + 1, quizSize))/\(quizSize)")
                             .font(.headline)
                     }
                     
@@ -68,10 +69,10 @@ struct QuizView: View {
                                 isShowing: true, icon: "xmark.circle.fill", message: "오답입니다.", background: Color(.systemRed))
                         }
                         
-                        if (solvedQuestions < 5) {
+                        if (solvedQuestions < quizSize) {
                             solvedQuestions += 1
                             
-                            if (solvedQuestions >= 5) {
+                            if (solvedQuestions >= quizSize) {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                     quizUiState = QuizUiState.result
                                 }
@@ -116,6 +117,7 @@ enum QuizUiState {
 struct QuizView_Previews: PreviewProvider {
     static var previews: some View {
         QuizView(
+            quizSize: 10,
             currentQuestion: questions.randomElement()!,
             quizQuestions: questions
         )
