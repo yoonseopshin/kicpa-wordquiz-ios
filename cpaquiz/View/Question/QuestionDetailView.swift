@@ -19,11 +19,18 @@ struct QuestionDetailView: View {
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.secondary)
-                Spacer()
+                
                 Text(toKoreanQuizType(from: question.type))
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.secondary)
+                
+                Text(question.subtype)
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.secondary)
+                
+                Spacer()
             }
             .padding(.horizontal, 16)
             

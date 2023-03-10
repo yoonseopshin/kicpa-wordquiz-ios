@@ -21,11 +21,12 @@ struct Question: Hashable, Codable, Identifiable {
     let answer: Int
     let type: TypeEnum
     let source: Source
-
+    let subtype: String
+    
     enum CodingKeys: String, CodingKey {
         case year, pid, description
         case subDescription = "sub_description"
-        case questions, answer, type, source
+        case questions, answer, type, source, subtype
     }
 }
 
@@ -55,3 +56,18 @@ func filterQuestions(by searchText: String, from questions: [Question]) -> [Ques
         return descriptionContainsSearchText || subDescriptionContainsSearchText || questionContainsSearchText || pidContainsSearchText
     }
 }
+
+func subtypesByQuizType(by quizType: TypeEnum, from questions: [Question]) -> [String] {
+    var subtypes = Set<String>()
+    for question in questions {
+        if question.type == quizType && question.subtype != "" {
+            subtypes.insert(question.subtype)
+        }
+    }
+    return Array(subtypes)
+}
+
+let subtypesOfAccounting = subtypesByQuizType(by: TypeEnum.accounting, from: questions)
+let subtypesOfBusiness = subtypesByQuizType(by: TypeEnum.business, from: questions)
+let subtypesOfCommericalLaw = subtypesByQuizType(by: TypeEnum.commercialLaw, from: questions)
+let subtypesOfTaxLaw = subtypesByQuizType(by: TypeEnum.taxLaw, from: questions)

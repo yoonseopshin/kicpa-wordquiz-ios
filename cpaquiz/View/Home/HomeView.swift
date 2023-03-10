@@ -11,10 +11,10 @@ import GoogleMobileAds
 struct HomeView: View {
     let cardColumns = [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)]
     let cards = [
-        CardView(quizType: TypeEnum.accounting),
-        CardView(quizType: TypeEnum.business),
-        CardView(quizType: TypeEnum.commercialLaw),
-        CardView(quizType: TypeEnum.taxLaw)
+        CardView(quizType: TypeEnum.accounting, subtypes: subtypesOfAccounting, selectedSubtypes: subtypesOfAccounting),
+        CardView(quizType: TypeEnum.business, subtypes: subtypesOfBusiness, selectedSubtypes: subtypesOfBusiness),
+        CardView(quizType: TypeEnum.commercialLaw, subtypes: subtypesOfCommericalLaw, selectedSubtypes: subtypesOfCommericalLaw),
+        CardView(quizType: TypeEnum.taxLaw, subtypes: subtypesOfTaxLaw, selectedSubtypes: subtypesOfTaxLaw)
     ]
     // FIXME: fetch from network
     let dday = calculateDDay(targetDateString: "2024-02-25")
